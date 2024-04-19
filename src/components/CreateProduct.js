@@ -75,7 +75,7 @@ const CreateProduct = () => {
 
   return (
     <div>
-      <h2>Criar Produto</h2>
+      <h1>Criar Produto</h2>
       <button onClick={handleLogout}>Deslogar</button> {/* Botão para deslogar o usuário */}
       <form onSubmit={handleSubmit}>
         <div>
