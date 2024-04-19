@@ -1,16 +1,19 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { useParams } from "react-router-dom";
 
 const GetProduct = () => {
-  const productId = useParams().id;
+  // Extrai o productId da URL
+  const productId = window.location.pathname.split("/").pop();
   const [product, setProduct] = useState(null);
 
   useEffect(() => {
+    // Função assíncrona para buscar os detalhes do produto
     const fetchData = async () => {
       try {
+        // Obtém o token do localStorage
         const token = localStorage.getItem("token");
-        const options = {
+        // Opções para a requisição GET dos detalhes do produto
+        const requestOptions = {
           method: "GET",
           url: `https://interview.t-alpha.com.br/api/products/get-one-product/${productId}`,
           headers: {
@@ -19,8 +22,11 @@ const GetProduct = () => {
           },
         };
 
-        const response = await axios.request(options);
+        // Faz a requisição GET dos detalhes do produto
+        const response = await axios.request(requestOptions);
+        // Verifica se a requisição foi bem-sucedida
         if (response.data.success) {
+          // Define os detalhes do produto no estado
           setProduct(response.data.data);
         } else {
           console.error("Erro ao obter produto:", response.data.message);
@@ -30,12 +36,14 @@ const GetProduct = () => {
       }
     };
 
+    // Chama a função para buscar os detalhes do produto quando o productId mudar
     fetchData();
-  }, [productId]);
+  }, [productId]); // Dispara o efeito sempre que o productId mudar
 
   return (
     <div>
       {product ? (
+        // Se o produto existir, exibe seus detalhes
         <div>
           <h2>Detalhes do Produto</h2>
           <p>
@@ -52,7 +60,8 @@ const GetProduct = () => {
           </p>
         </div>
       ) : (
-        <p>Carregando...</p>
+        // Se o produto ainda não foi carregado, exibe uma mensagem de espera
+        <p>Aguarde</p>
       )}
     </div>
   );

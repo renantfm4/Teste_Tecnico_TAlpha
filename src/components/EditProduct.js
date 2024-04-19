@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom"; // Importe o Link
+import { Link } from "react-router-dom"; 
 import axios from "axios";
 
+// Definindo o componente EditProduct
 const EditProduct = () => {
+  // Definindo estados para os dados do produto e do formulário
   const [productData, setProductData] = useState({
     name: "",
     description: "",
@@ -21,8 +23,11 @@ const EditProduct = () => {
   // Estado para controlar o estado de atualização
   const [isUpdated, setIsUpdated] = useState(false);
 
+  // Efeito para carregar os dados do produto
   useEffect(() => {
-    const productId = window.location.pathname.split("/").pop(); // Obtém o productId da URL
+    // Obtendo o productId da URL
+    const productId = window.location.pathname.split("/").pop();
+    // Função para obter os dados do produto
     const getProductData = async () => {
       try {
         const token = localStorage.getItem("token");
@@ -46,9 +51,11 @@ const EditProduct = () => {
     getProductData();
   }, [isUpdated]); // Apenas isUpdated é uma dependência, já que productId é extraído da URL diretamente
 
+  // Função para lidar com a edição do produto
   const handleEditProduct = async (e) => {
     e.preventDefault();
-    const productId = window.location.pathname.split("/").pop(); // Obtém o productId da URL
+    // Obtendo o productId da URL
+    const productId = window.location.pathname.split("/").pop();
     try {
       const token = localStorage.getItem("token");
       const requestOptions = {
@@ -73,13 +80,19 @@ const EditProduct = () => {
     }
   };
 
-  const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
+  // Função para atualizar os dados do formulário
+  const updateUserData = (e) => {
+    const { name, value } = e.target;
+    setFormData((prevFormData) => ({
+      ...prevFormData,
+      [name]: value,
+    }));
   };
 
+  // Renderização do componente
   return (
     <div>
-      <h2>Editar Produto</h2>
+      <h1>Editar Produto</h1>
       <div>
         <h3>Detalhes do Produto</h3>
         {productData.name && (
@@ -99,7 +112,7 @@ const EditProduct = () => {
             id="name"
             name="name"
             value={formData.name}
-            onChange={handleChange}
+            onChange={updateUserData}
             required
           />
         </div>
@@ -109,7 +122,7 @@ const EditProduct = () => {
             id="description"
             name="description"
             value={formData.description}
-            onChange={handleChange}
+            onChange={updateUserData}
             required
           />
         </div>
@@ -120,7 +133,7 @@ const EditProduct = () => {
             id="price"
             name="price"
             value={formData.price}
-            onChange={handleChange}
+            onChange={updateUserData}
             required
           />
         </div>
@@ -131,7 +144,7 @@ const EditProduct = () => {
             id="stock"
             name="stock"
             value={formData.stock}
-            onChange={handleChange}
+            onChange={updateUserData}
             required
           />
         </div>

@@ -4,6 +4,7 @@ import axios from "axios";
 import "./CreateProduct.css";
 
 const CreateProduct = () => {
+  // Define o estado para armazenar os dados do novo produto
   const [productData, setProductData] = useState({
     name: "",
     description: "",
@@ -11,12 +12,15 @@ const CreateProduct = () => {
     stock: 0,
   });
 
-  const [createdProduct, setCreatedProduct] = useState(null); // Estado para armazenar o produto criado
+  // Estado para armazenar o produto criado
+  const [createdProduct, setCreatedProduct] = useState(null);
 
+  // Função para lidar com o envio do formulário
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const options = {
+    // Opções para a requisição POST
+    const requestOptions = {
       method: "POST",
       url: "https://interview.t-alpha.com.br/api/products/create-product",
       headers: {
@@ -32,12 +36,15 @@ const CreateProduct = () => {
     };
 
     try {
-      const response = await axios(options);
+      // Realiza a requisição
+      const response = await axios(requestOptions);
       const responseBody = response.data;
 
+      // Verifica se a requisição foi bem-sucedida
       if (responseBody.success === true) {
         console.log("Produto registrado com sucesso");
-        setCreatedProduct(responseBody.data); // Armazena o produto criado
+        // Armazena o produto criado
+        setCreatedProduct(responseBody.data);
       } else {
         console.log(responseBody.message);
       }
@@ -46,17 +53,24 @@ const CreateProduct = () => {
     }
   };
 
-  const handleChange = (e) => {
-    setProductData({ ...productData, [e.target.name]: e.target.value });
+  // Função para atualizar os dados do produto ao modificar os campos do formulário
+  const updateUserData = (e) => {
+    const { name, value } = e.target;
+    setProductData((prevProductData) => ({
+      ...prevProductData,
+      [name]: value,
+    }));
   };
 
+  // Função para deslogar o usuário
   const handleLogout = () => {
     localStorage.removeItem("token"); // Limpa o token de autenticação
     window.location.href = "/login"; // Redireciona para a página de login
   };
 
+  // Função para redirecionar para a página de listagem de produtos
   const goToProductList = () => {
-    window.location.href = "/listproducts"; // Redirecionar para a página de listagem de produtos
+    window.location.href = "/listproducts";
   };
 
   return (
@@ -67,12 +81,7 @@ const CreateProduct = () => {
         <div>
           <label htmlFor="name">Nome:</label>
           <input
-            type="text"
-            id="name"
-            name="name"
-            value={productData.name}
-            onChange={handleChange}
-            required
+            type="text" id="name" name="name"value={productData.name} onChange={updateUserData} required
           />
         </div>
         <div>
@@ -81,7 +90,7 @@ const CreateProduct = () => {
             id="description"
             name="description"
             value={productData.description}
-            onChange={handleChange}
+            onChange={updateUserData}
             required
           />
         </div>
@@ -92,7 +101,7 @@ const CreateProduct = () => {
             id="price"
             name="price"
             value={productData.price}
-            onChange={handleChange}
+            onChange={updateUserData}
             required
           />
         </div>
@@ -103,7 +112,7 @@ const CreateProduct = () => {
             id="stock"
             name="stock"
             value={productData.stock}
-            onChange={handleChange}
+            onChange={updateUserData}
             required
           />
         </div>
