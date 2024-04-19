@@ -1,10 +1,11 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { Navigate } from "react-router-dom";
-import { Link } from "react-router-dom"; // Importe o Link
+import { Link } from "react-router-dom"; 
 import "./Register.css";
 
 const Register = () => {
+  // Estado para armazenar os dados do usuário
   const [userData, setUserData] = useState({
     name: "",
     taxNumber: "",
@@ -13,8 +14,10 @@ const Register = () => {
     password: "",
   });
 
+  // Estado para controlar o registro bem-sucedido
   const [registered, setRegistered] = useState(false);
 
+  // Função para registrar o usuário
   const registerUser = async (e) => {
     e.preventDefault();
 
@@ -22,6 +25,7 @@ const Register = () => {
       const response = await axios.request(registerOptions(userData));
       const responseBody = response.data;
 
+      // Verifica se o registro foi bem-sucedido
       if (responseBody.success === true) {
         console.log("Registro feito com sucesso");
         setRegistered(true);
@@ -33,6 +37,7 @@ const Register = () => {
     }
   };
 
+  // Função para atualizar os dados do usuário
   const updateUserData = (e) => {
     const { name, value } = e.target;
     setUserData((prevUserData) => ({
@@ -41,6 +46,7 @@ const Register = () => {
     }));
   };
 
+  // Função para configurar as opções da requisição de registro
   const registerOptions = (userData) => {
     return {
       method: "POST",
@@ -56,10 +62,12 @@ const Register = () => {
     };
   };
 
+  // Se o registro for bem-sucedido, redireciona para a página de login
   if (registered) {
     return <Navigate to="/login" />;
   }
 
+  // Renderiza o formulário de registro
   return (
     <div>
       <h1>Register</h1>
