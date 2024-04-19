@@ -1,0 +1,80 @@
+.create-product-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 50px;
+  }
+  
+  .product-form {
+    width: 400px;
+    padding: 30px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .form-group {
+    margin-bottom: 15px;
+  }
+  
+  label {
+    font-weight: bold;
+  }
+  
+  input[type="text"],
+  input[type="number"] {
+    width: calc(100% - 20px); 
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  textarea {
+    width: calc(100% - 20px);
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    resize: vertical; 
+  }
+  
+  button {
+    width: 100%;
+    padding: 20px;
+    margin-top: 10px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  button:hover {
+    background-color: #0056b3;
+  }
+  
+  .details-container {
+    margin-top: 20px;
+    width: 100%;
+  }
+  
+  .details-container h3 {
+    margin-bottom: 10px;
+  }
+  
+  .details-container p {
+    margin-bottom: 5px;
+  }
+  
+  .link-container {
+    margin-top: 20px;
+  }
+  
+  .link-container a {
+    color: #007bff;
+    text-decoration: none;
+  }
+  
+  .link-container a:hover {
+    text-decoration: underline;
+  }
+  
