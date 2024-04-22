@@ -1,8 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
-import { Navigate } from "react-router-dom";
-import { Link } from "react-router-dom"; 
-import "./Register.css";
+import { Navigate, Link } from "react-router-dom";
+import styles from "./Register.module.css";
 
 const Register = () => {
   // Estado para armazenar os dados do usuário
@@ -69,10 +68,10 @@ const Register = () => {
 
   // Renderiza o formulário de registro
   return (
-    <div>
-      <h1>Register</h1>
-      <form onSubmit={registerUser}>
-        <div>
+    <div className={styles.registerContainer}>
+      <h1 className={styles.registerTitle}>Registra-se</h1>
+      <form className={styles.registerForm} onSubmit={registerUser}>
+        <div className={styles.formGroup}>
           <label htmlFor="name">Nome:</label>
           <input
             type="text"
@@ -83,7 +82,7 @@ const Register = () => {
             required
           />
         </div>
-        <div>
+        <div className={styles.formGroup}>
           <label htmlFor="taxNumber">CPF ou CNPJ:</label>
           <input
             type="text"
@@ -94,7 +93,7 @@ const Register = () => {
             required
           />
         </div>
-        <div>
+        <div className={styles.formGroup}>
           <label htmlFor="mail">E-mail:</label>
           <input
             type="email"
@@ -105,7 +104,7 @@ const Register = () => {
             required
           />
         </div>
-        <div>
+        <div className={styles.formGroup}>
           <label htmlFor="phone">Telefone:</label>
           <input
             type="number"
@@ -116,7 +115,7 @@ const Register = () => {
             required
           />
         </div>
-        <div>
+        <div className={styles.formGroup}>
           <label htmlFor="password">Senha:</label>
           <input
             type="password"
@@ -127,11 +126,11 @@ const Register = () => {
             required
           />
         </div>
-        <button type="submit">Cadastrar</button>
+        <button type="submit" className={styles.submitButton}>Cadastrar</button>
       </form>
       {/* Botão para redirecionar para a página de login se já tiver uma conta */}
-      <Link to="/login">
-        <button>Já tenho uma conta. Ir para o Login</button>
+      <Link to="/login" className={styles.loginLink}>
+        Já tenho uma conta. Ir para o Login
       </Link>
     </div>
   );

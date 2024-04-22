@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
+import styles from "./ProductList.module.css";
 
 const ProductList = () => {
   // Estado para verificar se o usuário está autenticado
@@ -94,21 +95,31 @@ const ProductList = () => {
 
   // Se o usuário estiver autenticado, exibe a lista de produtos
   return (
-    <div>
-      <h1>Lista de Produtos</h1>
+    <div className={styles.productListContainer}>
+      <h1 className={styles.productListTitle}>Lista de Produtos</h1>
       <div>
         {productsList.map((product) => (
-          <li key={product.id}>
-            <Link to={`/editproduct/${product.id}`}>
-              <strong>{product.name}</strong>
-            </Link>{" "}
-            - {product.description} - $ {product.price} - Estoque: {product.stock}{" "}
-            <button onClick={() => handleDeleteProduct(product.id)}>Deletar</button>{" "}
-            <Link to={`/editproduct/${product.id}`}>
-              <button>Editar</button>
-            </Link>
-          </li>
+          <div key={product.id} className={styles.productListItem}>
+            <div>
+              <Link to={`/product/${product.id}`} className={`${styles.productLink} ${styles.productNameLink}`}>
+                <strong>{product.name}</strong>
+              </Link>
+            </div>
+            <div className={styles.productDescription}>{product.description}</div>
+            <div className={styles.productPrice}>$ {product.price}</div>
+            <div className={styles.productStock}>Estoque: {product.stock}</div>
+            <div className={styles.productActions}>
+              <button className={styles.deleteButton} onClick={() => handleDeleteProduct(product.id)}>Deletar</button>
+              <Link to={`/editproduct/${product.id}`}>
+                <button className={styles.productButton}>Editar</button>
+              </Link>
+            </div>
+          </div>
+          
         ))}
+        <Link to="/createproduct">
+        <button className={styles.createProductButton}>Voltar para página de criação de produtos</button>
+      </Link>
       </div>
     </div>
   );

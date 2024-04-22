@@ -1,0 +1,79 @@
+.editProductContainer {
+    text-align: center;
+    margin: 50px auto;
+    max-width: 600px;
+    border: 1px solid #ccc;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .editProductTitle {
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+  
+  .productDetailsContainer {
+    margin-bottom: 20px;
+  }
+  
+  .productDetailsTitle {
+    font-size: 20px;
+    margin-bottom: 10px;
+  }
+  
+  .productDetails {
+    text-align: left;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #fff;
+    margin-bottom: 20px;
+  }
+  
+  .formGroup {
+    margin-bottom: 20px;
+    margin-right: 20px;
+  }
+  
+  label {
+    display: block;
+    margin-bottom: 5px;
+  }
+  
+  textarea, input[type="text"], input[type="number"] {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  button {
+    padding: 8px 16px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 20px;
+  }
+  
+  .saveButton {
+    background-color: #007bff;
+    color: #fff;
+  }
+  
+  .backButton {
+    text-decoration: none;
+    color: #333;
+  }
+  
+  .backButton button {
+    background-color: #ccc;
+    color: #333;
+  }
+  
+  .backButton button:hover {
+    background-color: #bbb;
+  }
+  

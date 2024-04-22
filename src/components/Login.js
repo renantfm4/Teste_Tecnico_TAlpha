@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { Navigate, Link } from "react-router-dom";
-import "./Login.css";
+import styles from "./Login.module.css";
 
 function Login() {
   // Estado para armazenar os dados de login
@@ -71,10 +71,10 @@ function Login() {
 
   // Renderiza o formulário de login
   return (
-    <div className="login-container">
-      <h1>Login</h1>
-      <form className="login-form" onSubmit={loginUser}>
-        <div className="form-group">
+    <div className={styles.loginContainer}>
+      <h1 className={styles.loginTitle}>Login</h1>
+      <form className={styles.loginForm} onSubmit={loginUser}>
+        <div className={styles.formGroup}>
           <label htmlFor="taxNumber">CPF ou CNPJ:</label>
           <input
             type="text"
@@ -85,7 +85,7 @@ function Login() {
             required
           />
         </div>
-        <div className="form-group">
+        <div className={styles.formGroup}>
           <label htmlFor="password">Senha:</label>
           <input
             type="password"
@@ -96,9 +96,9 @@ function Login() {
             required
           />
         </div>
-        <button type="submit">Entrar</button>
-        <p className="register-link">
-          Não tem uma conta? <Link to="/register">Registre-se aqui</Link>
+        <button type="submit" className={styles.submitButton}>Entrar</button>
+        <p className={styles.registerLink}>
+          Não tem uma conta? <Link to="/register" className={styles.link}>Registre-se aqui</Link>
         </p>
       </form>
     </div>

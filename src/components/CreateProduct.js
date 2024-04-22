@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
-import "./CreateProduct.css";
+import styles from "./CreateProduct.module.css";
 
 const CreateProduct = () => {
   // Define o estado para armazenar os dados do novo produto
@@ -74,17 +74,17 @@ const CreateProduct = () => {
   };
 
   return (
-    <div>
-      <h1>Criar Produto</h1>
-      <button onClick={handleLogout}>Deslogar</button> {/* Botão para deslogar o usuário */}
+    <div className={styles.createProductContainer}>
+      <h1 className={styles.createProductTitle}>Criar Produto</h1>
+      <button onClick={handleLogout} className={styles.logoutButton}>Deslogar</button>
       <form onSubmit={handleSubmit}>
-        <div>
+        <div className={styles.formGroup}>
           <label htmlFor="name">Nome:</label>
           <input
-            type="text" id="name" name="name"value={productData.name} onChange={updateUserData} required
+            type="text" id="name" name="name" value={productData.name} onChange={updateUserData} required
           />
         </div>
-        <div>
+        <div className={styles.formGroup}>
           <label htmlFor="description">Descrição:</label>
           <textarea
             id="description"
@@ -94,7 +94,7 @@ const CreateProduct = () => {
             required
           />
         </div>
-        <div>
+        <div className={styles.formGroup}>
           <label htmlFor="price">Preço:</label>
           <input
             type="number"
@@ -105,7 +105,7 @@ const CreateProduct = () => {
             required
           />
         </div>
-        <div>
+        <div className={styles.formGroup}>
           <label htmlFor="stock">Estoque:</label>
           <input
             type="number"
@@ -116,21 +116,18 @@ const CreateProduct = () => {
             required
           />
         </div>
-        <button type="submit">Criar Produto</button>
-        {/* Adicione um botão para ir para a página de listagem de produtos */}
-        <button onClick={goToProductList}>Ir para a Lista de Produtos</button>
+        <button type="submit" className={styles.submitButton}>Criar Produto</button>
+        <button onClick={goToProductList} className={styles.goToListButton}>Ir para a Lista de Produtos</button>
       </form>
 
-      {/* Exibe detalhes do produto criado, se existir */}
       {createdProduct && (
-        <div>
+        <div className={styles.productDetails}>
           <h3>Detalhes do Produto Criado</h3>
           <p>Nome: {createdProduct.name}</p>
           <p>Descrição: {createdProduct.description}</p>
           <p>Preço: {createdProduct.price}</p>
           <p>Estoque: {createdProduct.stock}</p>
-          {/* Adicione o link para editar o produto */}
-          <Link to={`/editproduct/${createdProduct.id}`}>Editar Produto</Link>
+          <Link to={`/editproduct/${createdProduct.id}`} className={styles.editProductLink}>Editar Produto</Link>
         </div>
       )}
     </div>

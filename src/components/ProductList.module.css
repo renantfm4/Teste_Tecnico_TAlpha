@@ -1,0 +1,85 @@
+.productListContainer {
+  text-align: center;
+  margin: 50px auto;
+  max-width: 600px;
+  border: 1px solid #ccc;
+  background-color: #f9f9f9;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 15px 10px 5px rgba(0, 0, 0, 0.2); 
+}
+
+.productListTitle {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.productListItem {
+  margin-bottom: 20px;
+}
+
+.productNameLink {
+  text-decoration: none;
+  font-size: 35px;
+  color: #333;
+}
+
+.productNameLink:hover {
+  color: #007bff;
+}
+
+.productDescription {
+  margin-bottom: 5px;
+}
+
+.productPrice {
+  margin-bottom: 5px;
+}
+
+.productStock {
+  margin-bottom: 5px;
+}
+
+.productActions {
+  display: flex;
+  justify-content: center;
+}
+
+.productButton,
+.deleteButton {
+  margin-right: 10px;
+  padding: 8px 16px;
+  font-size: 14px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.productButton {
+  background-color: #007bff;
+  color: #fff;
+}
+
+.deleteButton {
+  background-color: #f73131;
+  color: #fff;
+}
+
+.productButton:hover,
+.deleteButton:hover {
+  background-color: #0056b3;
+}
+.createProductButton {
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: #9a48e2;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.createProductButton:hover {
+  background-color: #0056b3;
+}

@@ -1,10 +1,9 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom"; 
+import { Link } from "react-router-dom";
 import axios from "axios";
+import styles from "./EditProduct.module.css";
 
-// Definindo o componente EditProduct
 const EditProduct = () => {
-  // Definindo estados para os dados do produto e do formulário
   const [productData, setProductData] = useState({
     name: "",
     description: "",
@@ -12,7 +11,6 @@ const EditProduct = () => {
     stock: 0,
   });
 
-  // Estado para armazenar as alterações do formulário
   const [formData, setFormData] = useState({
     name: "",
     description: "",
@@ -20,14 +18,10 @@ const EditProduct = () => {
     stock: 0,
   });
 
-  // Estado para controlar o estado de atualização
   const [isUpdated, setIsUpdated] = useState(false);
 
-  // Efeito para carregar os dados do produto
   useEffect(() => {
-    // Obtendo o productId da URL
     const productId = window.location.pathname.split("/").pop();
-    // Função para obter os dados do produto
     const getProductData = async () => {
       try {
         const token = localStorage.getItem("token");
@@ -42,19 +36,17 @@ const EditProduct = () => {
         const response = await axios(requestOptions);
         setProductData(response.data.data);
         setFormData(response.data.data);
-        setIsUpdated(false); // Redefine o estado de atualização
+        setIsUpdated(false);
       } catch (error) {
         console.error(error);
       }
     };
 
     getProductData();
-  }, [isUpdated]); // Apenas isUpdated é uma dependência, já que productId é extraído da URL diretamente
+  }, [isUpdated]);
 
-  // Função para lidar com a edição do produto
   const handleEditProduct = async (e) => {
     e.preventDefault();
-    // Obtendo o productId da URL
     const productId = window.location.pathname.split("/").pop();
     try {
       const token = localStorage.getItem("token");
@@ -71,7 +63,7 @@ const EditProduct = () => {
       const response = await axios(requestOptions);
       if (response.data.success) {
         console.log("Produto atualizado com sucesso!");
-        setIsUpdated(true); // Define o estado de atualização como true após a edição bem-sucedida
+        setIsUpdated(true);
       } else {
         console.error("Falha ao atualizar o produto:", response.data.message);
       }
@@ -80,7 +72,6 @@ const EditProduct = () => {
     }
   };
 
-  // Função para atualizar os dados do formulário
   const updateUserData = (e) => {
     const { name, value } = e.target;
     setFormData((prevFormData) => ({
@@ -89,14 +80,13 @@ const EditProduct = () => {
     }));
   };
 
-  // Renderização do componente
   return (
-    <div>
-      <h1>Editar Produto</h1>
-      <div>
-        <h3>Detalhes do Produto</h3>
+    <div className={styles.editProductContainer}>
+      <h1 className={styles.editProductTitle}>Editar Produto</h1>
+      <div className={styles.productDetailsContainer}>
+        <h3 className={styles.productDetailsTitle}>Detalhes do Produto</h3>
         {productData.name && (
-          <div>
+          <div className={styles.productDetails}>
             <p><strong>Nome:</strong> {productData.name}</p>
             <p><strong>Descrição:</strong> {productData.description}</p>
             <p><strong>Preço:</strong> {productData.price}</p>
@@ -104,8 +94,8 @@ const EditProduct = () => {
           </div>
         )}
       </div>
-      <form onSubmit={handleEditProduct}>
-        <div>
+      <form className={styles.productForm} onSubmit={handleEditProduct}>
+        <div className={styles.formGroup}>
           <label htmlFor="name">Nome:</label>
           <input
             type="text"
@@ -116,7 +106,7 @@ const EditProduct = () => {
             required
           />
         </div>
-        <div>
+        <div className={styles.formGroup}>
           <label htmlFor="description">Descrição:</label>
           <textarea
             id="description"
@@ -126,7 +116,7 @@ const EditProduct = () => {
             required
           />
         </div>
-        <div>
+        <div className={styles.formGroup}>
           <label htmlFor="price">Preço:</label>
           <input
             type="number"
@@ -137,7 +127,7 @@ const EditProduct = () => {
             required
           />
         </div>
-        <div>
+        <div className={styles.formGroup}>
           <label htmlFor="stock">Estoque:</label>
           <input
             type="number"
@@ -148,10 +138,9 @@ const EditProduct = () => {
             required
           />
         </div>
-        <button type="submit">Salvar Alterações</button>
+        <button className={styles.saveButton} type="submit">Salvar Alterações</button>
       </form>
-      {/*Botão de volta para a lista de produtos */}
-      <Link to="/listproducts">
+      <Link to="/listproducts" className={styles.backButton}>
         <button>Voltar para Lista de Produtos</button>
       </Link>
     </div>

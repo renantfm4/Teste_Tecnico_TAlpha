@@ -1,0 +1,108 @@
+.createProductContainer {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 15px;
+    margin-top: 80px;
+    background-color: #f9f9f9;
+    box-shadow: 15px 10px 5px rgba(0, 0, 0, 0.2); 
+}
+
+.createProductTitle {
+    font-size: 24px;
+    margin-bottom: 20px;
+    margin-left: 220px;
+}
+
+.formGroup {
+    margin-bottom: 20px;
+    margin-right: 30px;
+    margin-left: 10px;
+}
+
+label {
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+input[type="text"],
+input[type="number"],
+textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+textarea {
+    resize: vertical; 
+}
+
+.submitButton,
+.logoutButton,
+.goToListButton {
+    padding: 10px 20px;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease; 
+}
+
+.submitButton:hover,
+.logoutButton:hover,
+.goToListButton:hover {
+    text-decoration: none;
+}
+
+.submitButton {
+    background-color: #007bff; 
+    margin-left: 10px;
+}
+
+.logoutButton {
+    background-color: #dc3545;
+    position: absolute;
+    border-radius: 30px;
+    width: 150px;
+    height: 50px;
+    top: 20px;
+    left: 100px;
+    transition: transform 0.2s ease;
+  }
+  
+.logoutButton:hover {
+    background-color: #c82333;
+    transform: scale(1.05);
+  }
+  
+
+.goToListButton {
+    background-color: #28a745; 
+    margin-left: 205px;
+    position: relative;
+}
+
+.goToListButton:hover {
+    background-color: #218838;
+}
+
+.productDetails {
+    margin-top: 20px;
+}
+
+.productDetails p {
+    margin-bottom: 10px;
+}
+
+.editProductLink {
+    display: block;
+    color: #007bff;
+    text-decoration: none;
+    margin-top: 10px;
+}
+
+.editProductLink:hover {
+    text-decoration: underline;
+}
