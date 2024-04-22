@@ -63,8 +63,8 @@ input[type="password"] {
   
 .loginLink {
     margin-top: 20px;
-    bottom: 160px;
-    position: absolute;
+    bottom: 60px;
+    position: relative;
     font-size: 14px;
     text-decoration: none;
     color: #007bff;
